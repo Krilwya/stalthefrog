@@ -1,6 +1,5 @@
 const COUNTER_BASE_URL =
   "https://api.counterapi.dev/v2/krilwyas-team-2939/stalfrogcount";
-const COUNTER_API_KEY = "ut_DbEMrbf5lzrBj5s14ia0TNXeYIOKRhzb98n8bgAQ";
 const LS_COUNT = "stalFrogCount";
 const LS_SIGNED = "stalFrogSigned";
 
@@ -36,22 +35,14 @@ const setSignedState = (signed) => {
 };
 
 async function fetchCountFromApi() {
-  const response = await fetch(COUNTER_BASE_URL, {
-    headers: {
-      Authorization: `Bearer ${COUNTER_API_KEY}`,
-    },
-  });
+  const response = await fetch(COUNTER_BASE_URL);
   if (!response.ok) throw new Error("Could not fetch counter");
   const data = await response.json();
   return data.value || 0;
 }
 
 async function incrementCountFromApi() {
-  const response = await fetch(`${COUNTER_BASE_URL}/up`, {
-    headers: {
-      Authorization: `Bearer ${COUNTER_API_KEY}`,
-    },
-  });
+  const response = await fetch(`${COUNTER_BASE_URL}/up`);
   if (!response.ok) throw new Error("Could not increment counter");
   const data = await response.json();
   return data.value || currentCount + 1;
