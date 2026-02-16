@@ -38,7 +38,7 @@ async function fetchCountFromApi() {
   const response = await fetch(COUNTER_BASE_URL);
   if (!response.ok) throw new Error("Could not fetch counter");
   const data = await response.json();
-  return data.value || 0;
+  return data.data.up_count || 0;
 }
 
 async function incrementCountFromApi() {
