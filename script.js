@@ -1,6 +1,6 @@
-const COUNT_NS = "stal-frog-movement";
-const COUNT_KEY = "stal-frog-signatures";
-const COUNT_UPDATE_KEY = "ut_DbEMrbf5lzrBj5s14ia0TNXeYIOKRhzb98n8bgAQ";
+const COUNTER_BASE_URL =
+  "https://api.counterapi.dev/v2/krilwyas-team-2939/stalfrogcount";
+const COUNTER_API_KEY = "ut_DbEMrbf5lzrBj5s14ia0TNXeYIOKRhzb98n8bgAQ";
 const LS_COUNT = "stalFrogCount";
 const LS_SIGNED = "stalFrogSigned";
 
@@ -8,18 +8,8 @@ const countEl = document.getElementById("signatureCount");
 const signBtn = document.getElementById("signButton");
 const statusEl = document.getElementById("statusText");
 const img = document.getElementById("stalImage");
-const imgFallback = document.getElementById("imageFallback");
 
 let currentCount = 0;
-
-img.addEventListener("load", () => {
-  imgFallback.style.display = "none";
-});
-
-img.addEventListener("error", () => {
-  img.style.display = "none";
-  imgFallback.style.display = "grid";
-});
 
 const formatCount = (value) => new Intl.NumberFormat().format(value);
 
@@ -46,16 +36,22 @@ const setSignedState = (signed) => {
 };
 
 async function fetchCountFromApi() {
-  const response = await fetch(`https://api.countapi.xyz/get/${COUNT_NS}/${COUNT_KEY}`);
+  const response = await fetch(COUNTER_BASE_URL, {
+    headers: {
+      Authorization: `Bearer ${COUNTER_API_KEY}`,
+    },
+  });
   if (!response.ok) throw new Error("Could not fetch counter");
   const data = await response.json();
   return data.value || 0;
 }
 
 async function incrementCountFromApi() {
-  const response = await fetch(
-    `https://api.countapi.xyz/hit/${COUNT_NS}/${COUNT_KEY}?update_key=${encodeURIComponent(COUNT_UPDATE_KEY)}`
-  );
+  const response = await fetch(`${COUNTER_BASE_URL}/up`, {
+    headers: {
+      Authorization: `Bearer ${COUNTER_API_KEY}`,
+    },
+  });
   if (!response.ok) throw new Error("Could not increment counter");
   const data = await response.json();
   return data.value || currentCount + 1;
@@ -95,7 +91,6 @@ async function signPetition() {
     localStorage.setItem(LS_COUNT, String(fallback));
     localStorage.setItem(LS_SIGNED, "true");
     setSignedState(true);
-    statusEl.textContent = "Signed locally. Global counter is temporarily offline.";
   }
 }
 
