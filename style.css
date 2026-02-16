@@ -29,6 +29,7 @@ body {
   padding: 32px 16px;
   display: grid;
   place-items: center;
+  gap: 14px;
   position: relative;
   overflow: hidden;
 }
@@ -194,6 +195,18 @@ h1 span {
 .status.success {
   color: #0f8659;
   font-weight: 700;
+}
+
+.footer-note {
+  margin: 0;
+  padding: 6px 12px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  background: #ffffff9c;
+  border: 1px solid #ffffff;
+  border-radius: 999px;
+  position: relative;
+  z-index: 1;
 }
 
 @keyframes rise {

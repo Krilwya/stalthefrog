@@ -1,5 +1,6 @@
 const COUNT_NS = "stal-frog-movement";
-const COUNT_KEY = "signatures";
+const COUNT_KEY = "stal-frog-signatures";
+const COUNT_UPDATE_KEY = "ut_DbEMrbf5lzrBj5s14ia0TNXeYIOKRhzb98n8bgAQ";
 const LS_COUNT = "stalFrogCount";
 const LS_SIGNED = "stalFrogSigned";
 
@@ -52,7 +53,9 @@ async function fetchCountFromApi() {
 }
 
 async function incrementCountFromApi() {
-  const response = await fetch(`https://api.countapi.xyz/hit/${COUNT_NS}/${COUNT_KEY}`);
+  const response = await fetch(
+    `https://api.countapi.xyz/hit/${COUNT_NS}/${COUNT_KEY}?update_key=${encodeURIComponent(COUNT_UPDATE_KEY)}`
+  );
   if (!response.ok) throw new Error("Could not increment counter");
   const data = await response.json();
   return data.value || currentCount + 1;

@@ -15,4 +15,4 @@ If the image is missing, the page shows a styled fallback block automatically.
 3. Set source to your main branch and root folder.
 4. Save, then open your published URL.
 
-The signature count uses `countapi.xyz` so visitors share the same live number.
+The signature count uses CountAPI directly from the browser.
