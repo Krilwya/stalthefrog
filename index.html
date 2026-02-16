@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stal for Frog 2026</title>
+    <meta
+      name="description"
+      content="Sign the movement to rebrand Stal as a frog."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="page">
+      <div class="ambient ambient-a" aria-hidden="true"></div>
+      <div class="ambient ambient-b" aria-hidden="true"></div>
+
+      <section class="card">
+        <p class="eyebrow">Community Petition</p>
+        <h1>Rebrand <span>Stal</span> as a frog</h1>
+        <p class="subtext">
+          We love Stal. We also believe the frog era has arrived. If you agree,
+          add your signature and help this movement go fully amphibious.
+        </p>
+
+        <div class="media-wrap" aria-hidden="true">
+          <img id="stalImage" src="assets/stal.png" alt="" />
+        </div>
+
+        <div class="counter-wrap" aria-live="polite">
+          <p class="counter-label">People who already signed</p>
+          <p class="counter-value"><span id="signatureCount">0</span></p>
+        </div>
+
+        <button id="signButton" class="sign-button" type="button">
+          Sign the Frog Rebrand
+        </button>
+        <p id="statusText" class="status">One signature per browser.</p>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
